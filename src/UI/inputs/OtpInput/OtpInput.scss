@@ -18,5 +18,11 @@
       border-color: var(--primary);
       box-shadow: 0 0 4px var(--primary);
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: initial;
+      opacity: 0.5;
+    }
   }
 }

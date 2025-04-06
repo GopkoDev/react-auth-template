@@ -50,7 +50,7 @@ export const RegistrationPageContent = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RegistrationFormValues>({
     resolver: zodResolver(registrationSchema),
   });
@@ -94,6 +94,7 @@ export const RegistrationPageContent = (): JSX.Element => {
               <TextInput
                 {...register('email')}
                 isErrored={!!errors.email}
+                disabled={isSubmitting}
                 autoFocus
                 placeholder="email@example.com"
               />
@@ -103,6 +104,7 @@ export const RegistrationPageContent = (): JSX.Element => {
               <TextInput
                 {...register('name')}
                 isErrored={!!errors.name}
+                disabled={isSubmitting}
                 autoFocus
                 placeholder="Alex"
               />
@@ -112,6 +114,7 @@ export const RegistrationPageContent = (): JSX.Element => {
               <PasswordInput
                 {...register('password')}
                 isErrored={!!errors.password}
+                disabled={isSubmitting}
                 minLength={8}
                 minLengthIndicator
               />
@@ -121,11 +124,12 @@ export const RegistrationPageContent = (): JSX.Element => {
               <PasswordInput
                 {...register('confirmPassword')}
                 isErrored={!!errors.confirmPassword}
+                disabled={isSubmitting}
               />
             </Label>
           </Card.Body>
           <Card.Footer>
-            <Button buttonType="submit" width="100%">
+            <Button disabled={isSubmitting} buttonType="submit" width="100%">
               Sign Up
             </Button>
           </Card.Footer>

@@ -31,7 +31,7 @@ export const LoginPageContent = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
   });
@@ -73,6 +73,7 @@ export const LoginPageContent = (): JSX.Element => {
               <TextInput
                 {...register('email')}
                 isErrored={!!errors.email}
+                disabled={isSubmitting}
                 autoFocus
                 placeholder="email@example.com"
               />
@@ -82,12 +83,13 @@ export const LoginPageContent = (): JSX.Element => {
               <PasswordInput
                 {...register('password')}
                 isErrored={!!errors.password}
+                disabled={isSubmitting}
                 forgotPassword="/forgot-password"
               />
             </Label>
           </Card.Body>
           <Card.Footer>
-            <Button buttonType="submit" width="100%">
+            <Button disabled={isSubmitting} buttonType="submit" width="100%">
               Sign In
             </Button>
           </Card.Footer>

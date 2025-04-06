@@ -1,5 +1,5 @@
 import { JSX, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ResetPassworPageContent.scss';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -42,7 +42,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ResetPassworFormValues>({
     resolver: zodResolver(resetPassworSchema),
   });
@@ -87,6 +87,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
               <OtpInput
                 length={6}
                 onChange={(value: string) => setPinValue(value)}
+                disabled={isSubmitting}
               />
             </div>
 
@@ -94,6 +95,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
               <PasswordInput
                 {...register('password')}
                 isErrored={!!errors.password}
+                disabled={isSubmitting}
                 minLength={8}
                 minLengthIndicator
               />
@@ -103,21 +105,12 @@ export const ResetPassworPageContent = (): JSX.Element => {
               <PasswordInput
                 {...register('confirmPassword')}
                 isErrored={!!errors.confirmPassword}
+                disabled={isSubmitting}
               />
             </Label>
-
-            <div className="reset_passwor_page--subtitle">
-              If you didn't receive the email,{' '}
-              <Link
-                className="reset_passwor_page--subtitle--link"
-                to="/resend-email"
-              >
-                click here to resend it
-              </Link>
-            </div>
           </Card.Body>
           <Card.Footer>
-            <Button width="100%" buttonType="submit">
+            <Button disabled={isSubmitting} width="100%" buttonType="submit">
               Reset password
             </Button>
           </Card.Footer>

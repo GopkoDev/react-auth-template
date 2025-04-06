@@ -29,7 +29,7 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ForgotPasswordValues>({
     resolver: zodResolver(forgotPasswordSchema),
   });
@@ -69,13 +69,14 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
               <TextInput
                 {...register('email')}
                 isErrored={!!errors.email}
+                disabled={isSubmitting}
                 autoFocus
                 placeholder="email@example.com"
               />
             </Label>
           </Card.Body>
           <Card.Footer>
-            <Button buttonType="submit" width="100%">
+            <Button disabled={isSubmitting} buttonType="submit" width="100%">
               Send reset link
             </Button>
           </Card.Footer>

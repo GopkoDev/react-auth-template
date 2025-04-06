@@ -4,9 +4,14 @@ import './OtpInput.scss';
 interface OtpInputProps {
   length: number;
   onChange: (otp: string) => void;
+  disabled?: boolean;
 }
 
-export const OtpInput: React.FC<OtpInputProps> = ({ length, onChange }) => {
+export const OtpInput: React.FC<OtpInputProps> = ({
+  length,
+  onChange,
+  disabled,
+}) => {
   const [otp, setOtp] = useState<string[]>(Array(length).fill(''));
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -66,6 +71,7 @@ export const OtpInput: React.FC<OtpInputProps> = ({ length, onChange }) => {
           onPaste={handlePaste}
           className="otp_input--field"
           autoFocus={index === 0}
+          disabled={disabled}
         />
       ))}
     </div>
