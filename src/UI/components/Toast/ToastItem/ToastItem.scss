@@ -1,0 +1,33 @@
+.toast {
+  padding: 12px 24px;
+  background-color: var(--main_surface);
+  color: var(--primary_text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: toastIn 0.5s ease forwards;
+  max-width: 400px;
+  width: fit-content;
+
+  &--message {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &--error {
+    border-bottom: 2px solid var(--error_border_color);
+  }
+  &--info {
+    border-bottom: 2px solid var(--primary_border_color);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

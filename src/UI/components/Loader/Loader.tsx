@@ -1,6 +1,7 @@
 import './Loader.scss';
 import { Portal } from '../../Portals/Portal';
 import { useScrollLock } from '../../../hooks/useScrollLock';
+import { JSX } from 'react';
 
 interface LoaderProps {
   isOpen: boolean;
