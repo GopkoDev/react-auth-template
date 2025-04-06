@@ -11,6 +11,8 @@ import { Button } from '../../../../../UI/components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { PasswordInput } from '../../../../../UI/inputs/PasswordInput/PasswordInput';
 import { registration } from '../../../../../api/auth';
+import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 const registrationSchema = z
   .object({
@@ -49,6 +51,7 @@ export const RegistrationPageContent = (): JSX.Element => {
     resolver: zodResolver(registrationSchema),
   });
   const navigate = useNavigate();
+  const { addToast } = useToast();
 
   const onSubmit = async (data: RegistrationFormValues) => {
     try {
@@ -60,6 +63,8 @@ export const RegistrationPageContent = (): JSX.Element => {
         navigate(response.path);
       }
     } catch (error) {
+      const errorMessage = getApiErrorMessage(error);
+      addToast(errorMessage, 'error');
       console.warn('Registration failed:', error);
     }
   };

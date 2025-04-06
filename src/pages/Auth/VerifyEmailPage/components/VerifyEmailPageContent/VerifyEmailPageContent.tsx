@@ -6,19 +6,28 @@ import { Card } from '../../../../../UI/components/Card/Card';
 import { OtpInput } from '../../../../../UI/inputs/OtpInput/OtpInput';
 import { Button } from '../../../../../UI/components/Button/Button';
 import { verifyEmail } from '../../../../../api/auth';
+import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 export const VerifyEmailPageContent = (): JSX.Element => {
   const navigate = useNavigate();
   const { token } = useParams<{ token: string }>();
+  const { addToast } = useToast();
   const params = new URLSearchParams(window.location.search);
   const email = params.get('email');
 
   const onInputChange = async (value: string) => {
     if (value.length === 6 && token) {
-      const response = await verifyEmail({ token, pin: value });
-      if (response.accessToken) {
-        localStorage.setItem('accessToken', response.accessToken);
-        window.location.href = '/';
+      try {
+        const response = await verifyEmail({ token, pin: value });
+        if (response.accessToken) {
+          localStorage.setItem('accessToken', response.accessToken);
+          window.location.href = '/';
+        }
+      } catch (error) {
+        const errorMessage = getApiErrorMessage(error);
+        addToast(errorMessage, 'error');
+        console.warn('Email verification error:', error);
       }
     }
   };

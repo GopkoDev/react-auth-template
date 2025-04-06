@@ -1,6 +1,7 @@
 import { Portal } from '../../../Portals/Portal';
 import { ToastItem } from '../ToastItem/ToastItem';
 import { useToast } from '../ToastProvider';
+import './ToastContainer.scss';
 
 export const ToastContainer = () => {
   const { toasts, removeToast } = useToast();

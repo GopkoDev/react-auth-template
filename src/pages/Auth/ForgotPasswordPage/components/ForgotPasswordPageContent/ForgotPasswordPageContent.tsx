@@ -10,6 +10,8 @@ import { Label } from '../../../../../UI/components/Label/Label';
 import { TextInput } from '../../../../../UI/inputs/TextInput/TextInput';
 import { Button } from '../../../../../UI/components/Button/Button';
 import { forgotPassword } from '../../../../../api/auth';
+import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 const forgotPasswordSchema = z.object({
   email: z
@@ -29,14 +31,18 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
     resolver: zodResolver(forgotPasswordSchema),
   });
   const navigate = useNavigate();
+  const { addToast } = useToast();
 
   const onSubmit = async (data: ForgotPasswordValues) => {
     try {
       const response = await forgotPassword(data);
       if (response.path) {
+        addToast('A password reset link has been sent to your email address.');
         navigate(response.path);
       }
     } catch (error) {
+      const errorMessage = getApiErrorMessage(error);
+      addToast(errorMessage, 'error');
       console.warn('Registration failed:', error);
     }
   };

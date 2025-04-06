@@ -39,7 +39,7 @@ export const registration = async (payload: RegistrationPayload) => {
     );
     return data;
   } catch (error) {
-    console.error('[REGISTER ERROR]', error);
+    console.warn('[REGISTER ERROR]', error);
     throw error;
   }
 };
@@ -56,7 +56,7 @@ export const verifyEmail = async (payload: VerifyEmailPayload) => {
 
     return data;
   } catch (error) {
-    console.error('[VERIFY EMAIL ERROR]', error);
+    console.warn('[VERIFY EMAIL ERROR]', error);
     throw error;
   }
 };
@@ -66,9 +66,10 @@ export const login = async (payload: LoginPayload) => {
     const data = await publicFetcher(`${API_BASE_URL}/api/auth/login`, 'POST', {
       body: JSON.stringify(payload),
     });
+    console.log(data);
     return data; // { accessToken, refreshToken, user }
   } catch (error) {
-    console.error('[LOGIN ERROR]', error);
+    console.warn('[LOGIN ERROR]', error);
     throw error;
   }
 };
@@ -84,7 +85,7 @@ export const forgotPassword = async (payload: ForgotPasswordPayload) => {
     );
     return data;
   } catch (error) {
-    console.error('[FORGOT PASSWORD ERROR]', error);
+    console.warn('[FORGOT PASSWORD ERROR]', error);
     throw error;
   }
 };
@@ -100,7 +101,7 @@ export const resetPassword = async (payload: ResetPasswordPayload) => {
     );
     return data;
   } catch (error) {
-    console.error('[RESET PASSWORD ERROR]', error);
+    console.warn('[RESET PASSWORD ERROR]', error);
     throw error;
   }
 };
@@ -110,7 +111,7 @@ export const logout = async () => {
     const data = await publicFetcher(`${API_BASE_URL}/api/auth/logout`, 'POST');
     return data;
   } catch (error) {
-    console.error('[LOGOUT ERROR]', error);
+    console.warn('[LOGOUT ERROR]', error);
     throw error;
   }
 };

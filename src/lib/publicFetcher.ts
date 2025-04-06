@@ -1,3 +1,5 @@
+import { handleApiError } from './apiError';
+
 export const publicFetcher = async (
   url: string,
   method: string = 'GET',
@@ -14,7 +16,7 @@ export const publicFetcher = async (
   });
 
   if (!response.ok) {
-    throw new Error(`Error: ${response.status} ${response.statusText}`);
+    return handleApiError(response);
   }
 
   return response.json();

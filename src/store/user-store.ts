@@ -23,6 +23,7 @@ class UserStore {
       return data;
     } catch (error) {
       console.warn('Failed to fetch user:', error);
+      throw error;
     }
   }
 

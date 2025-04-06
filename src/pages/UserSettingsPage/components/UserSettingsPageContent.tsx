@@ -10,7 +10,7 @@ export const UserSettingsPageContent = (): JSX.Element => {
       userStore.clearUser();
       window.location.href = '/';
     } catch (error) {
-      console.error('[LOGOUT ERROR]', error);
+      console.warn('[LOGOUT ERROR]', error);
     }
   };
   return (

@@ -1,4 +1,5 @@
 import { userStore } from '../store/user-store';
+import { handleApiError } from './apiError';
 
 export const privateFetcher = async (
   url: string,
@@ -32,7 +33,7 @@ export const privateFetcher = async (
     if (!refreshResponse.ok) {
       userStore.clearUser();
       window.location.href = '/login';
-      throw new Error('Failed to refresh token');
+      return handleApiError(refreshResponse);
     }
 
     const { accessToken: newAccessToken } = await refreshResponse.json();
@@ -50,16 +51,14 @@ export const privateFetcher = async (
     });
 
     if (!retryResponse.ok) {
-      throw new Error(
-        `Error: ${retryResponse.status} ${retryResponse.statusText}`
-      );
+      return handleApiError(retryResponse);
     }
 
     return retryResponse.json();
   }
 
   if (!response.ok) {
-    throw new Error(`Error: ${response.status} ${response.statusText}`);
+    return handleApiError(response);
   }
 
   return response.json();

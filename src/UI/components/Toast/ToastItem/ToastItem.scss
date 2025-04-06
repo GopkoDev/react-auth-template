@@ -3,8 +3,9 @@
   background-color: var(--main_surface);
   color: var(--primary_text);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: toastIn 0.5s ease forwards;
+  animation: slideInRight 0.3s ease forwards; // змінюємо анімацію
   max-width: 400px;
+  width: 100%;
   width: fit-content;
 
   &--message {
@@ -21,13 +22,13 @@
   }
 }
 
-@keyframes toastIn {
+@keyframes slideInRight {
   from {
+    transform: translateX(100%);
     opacity: 0;
-    transform: translateY(100%);
   }
   to {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateY(0);
   }
 }

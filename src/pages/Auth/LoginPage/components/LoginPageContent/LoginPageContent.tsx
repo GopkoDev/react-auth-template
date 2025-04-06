@@ -11,6 +11,8 @@ import { Button } from '../../../../../UI/components/Button/Button';
 import { Link } from 'react-router-dom';
 import { PasswordInput } from '../../../../../UI/inputs/PasswordInput/PasswordInput';
 import { login } from '../../../../../api/auth';
+import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 const loginSchema = z.object({
   email: z
@@ -23,6 +25,8 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const LoginPageContent = (): JSX.Element => {
+  const { addToast } = useToast();
+
   const {
     register,
     handleSubmit,
@@ -39,6 +43,8 @@ export const LoginPageContent = (): JSX.Element => {
         window.location.href = '/';
       }
     } catch (error) {
+      const errorMessage = getApiErrorMessage(error);
+      addToast(errorMessage, 'error');
       console.warn('LoginPageContent error:', error);
     }
   };

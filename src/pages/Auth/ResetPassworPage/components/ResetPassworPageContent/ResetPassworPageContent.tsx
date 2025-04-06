@@ -11,6 +11,8 @@ import { Button } from '../../../../../UI/components/Button/Button';
 import { Label } from '../../../../../UI/components/Label/Label';
 import { PasswordInput } from '../../../../../UI/inputs/PasswordInput/PasswordInput';
 import { resetPassword } from '../../../../../api/auth';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
+import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
 
 const resetPassworSchema = z
   .object({
@@ -35,6 +37,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
   const [pivValue, setPinValue] = useState<string>('');
   const navigate = useNavigate();
   const { token } = useParams<{ token: string }>();
+  const { addToast } = useToast();
   const {
     register,
     handleSubmit,
@@ -43,14 +46,13 @@ export const ResetPassworPageContent = (): JSX.Element => {
     resolver: zodResolver(resetPassworSchema),
   });
 
-  const onInputChange = async (value: string) => {
-    if (value.length === 6) {
-      setPinValue(value);
-    }
-  };
-
   const onSubmit = async (data: ResetPassworFormValues) => {
-    if (!token || !pivValue) return;
+    if (!token) return;
+
+    if (!pivValue || (pivValue && pivValue.length !== 6)) {
+      addToast('Please enter the pin code', 'error');
+      return;
+    }
 
     try {
       const response = await resetPassword({
@@ -63,6 +65,8 @@ export const ResetPassworPageContent = (): JSX.Element => {
         navigate('/login');
       }
     } catch (error) {
+      const errorMessage = getApiErrorMessage(error);
+      addToast(errorMessage, 'error');
       console.warn('Reset password failed:', error);
     }
   };
@@ -79,7 +83,10 @@ export const ResetPassworPageContent = (): JSX.Element => {
           </Card.Header>
           <Card.Body>
             <div className="reset_passwor_page--otp_input">
-              <OtpInput length={6} onChange={onInputChange} />
+              <OtpInput
+                length={6}
+                onChange={(value: string) => setPinValue(value)}
+              />
             </div>
 
             <Label errorText={errors.password?.message} title="Password">
