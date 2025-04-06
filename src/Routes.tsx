@@ -18,7 +18,7 @@ const privateRoutes: RouteType[] = [
   { path: '/user-settings', element: <UserSettingsPage /> },
   {
     path: '*',
-    element: <Navigate to="/" />,
+    element: <Navigate to="/user-settings" />,
   },
 ];
 

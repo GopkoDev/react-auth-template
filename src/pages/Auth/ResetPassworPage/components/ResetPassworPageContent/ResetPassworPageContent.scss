@@ -1,0 +1,27 @@
+.reset_passwor_page {
+  margin: auto 0;
+  text-align: center;
+
+  &--otp_input {
+    margin: 0 auto;
+  }
+
+  &--subtitle {
+    font-size: 14px;
+    color: var(--secondary_text);
+    line-height: 1.5;
+    margin-bottom: 32px;
+    font-weight: 500;
+
+    &--link {
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--focus_color);
+        text-decoration: underline;
+      }
+    }
+  }
+}
