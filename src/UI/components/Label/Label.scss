@@ -1,0 +1,24 @@
+.label {
+  display: block;
+  color: var(--primary_text);
+  font-family: var(--font_geist);
+  text-align: left;
+  width: 100%;
+  text-transform: capitalize;
+  position: relative;
+
+  &--title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  &--error {
+    color: var(--error_text);
+    font-size: 12px;
+    line-height: 150%;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+  }
+}

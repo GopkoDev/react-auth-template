@@ -1,0 +1,23 @@
+import {
+  Meta,
+  IconGallery,
+  IconItem,
+  Markdown,
+  Source,
+} from '@storybook/blocks';
+import * as icons from '../../assets/icons/index.ts';
+
+<Meta title="Iconography" />
+
+<Markdown>Icons List</Markdown>
+<IconGallery>
+
+{Object.entries(icons)
+.map(([name, Icon])=> (
+
+<IconItem key={name} name={name}>
+  <Icon />
+</IconItem>
+)) }
+
+</IconGallery>

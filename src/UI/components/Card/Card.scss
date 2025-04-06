@@ -1,0 +1,37 @@
+.card {
+  border-radius: var(--border_radius);
+  border: 1px solid var(--border_color);
+  max-width: 100%;
+  width: 100%;
+
+  &--header {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &--title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary_text);
+    line-height: 1;
+  }
+
+  &--subtitle {
+    font-size: 14px;
+    color: var(--secondary_text);
+    line-height: 1.5;
+  }
+
+  &--body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &--body,
+  &--footer {
+    padding: 0 24px 24px 24px;
+  }
+}

@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box !important;
+}
+
+body {
+  font-family: var(--font_geist);
+  font-size: 14px;
+  line-height: 125%;
+  color: var(--primary_text);
+  background-color: var(--main_surface);
+  height: 100dvh;
+  overflow: hidden;
+}
+
+body.sb-show-main {
+  overflow: auto !important;
+}
+
+#root {
+  height: 100dvh;
+}
+
+:root {
+  /* palette */
+  --background: #000; /* Dark background */
+  --foreground: #f4f4f5; /* Light foreground text */
+  --muted: #71717a; /* Muted text */
+  --muted-foreground: #a1a1aa; /* Muted foreground text */
+  --border: #3f3f46; /* Border color */
+  --input: #3f3f46; /* Input background */
+  --primary: #7c3aed; /* Primary accent color */
+  --primary-foreground: #ffffff; /* Text on primary */
+  --secondary: #3f3f46; /* Secondary background */
+  --secondary-foreground: #e4e4e7; /* Text on secondary */
+  --accent: #22d3ee; /* Accent color */
+  --accent-foreground: #ffffff; /* Text on accent */
+  --destructive: #ef4444; /* Error/destructive color */
+  --destructive-foreground: #ffffff; /* Text on destructive */
+  --ring: #7c3aed; /* Focus ring color */
+  --radius: 8px; /* Border radius */
+
+  /* text */
+  --primary_text: var(--foreground);
+  --secondary_text: var(--muted);
+  --placeholder_text: var(--muted-foreground);
+  --error_text: var(--destructive);
+
+  /* surface */
+  --main_surface: var(--background);
+  --secondary_surface: var(--secondary);
+  --accent_surface: var(--accent);
+  --additional_background: #1e1e2a; /* Slightly lighter background */
+
+  /* border */
+  --border_color: var(--border);
+  --primary_border_color: var(--primary);
+  --border_radius: var(--radius);
+  --layout_border_radius: 20px;
+
+  /* button */
+  --primary_button_color: var(--primary);
+
+  /* icon */
+  --icon_color: var(--foreground);
+  --icon_on_accent: var(--primary-foreground);
+
+  /* font */
+  --font_geist: 'Geist', sans-serif;
+
+  /* input */
+  --focus_color: var(--ring);
+  --error_input: var(--destructive);
+
+  --active_color: rgba(124, 58, 237, 0.1); /* Primary with transparency */
+  --hover_color: rgba(124, 58, 237, 0.2); /* Primary hover */
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  pointer-events: initial !important;
+  opacity: 0.5 !important;
+}
