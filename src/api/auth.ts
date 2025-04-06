@@ -28,6 +28,10 @@ export interface ResetPasswordPayload {
   password: string;
 }
 
+export interface ResendVerifyEmailPayload {
+  email: string;
+}
+
 export const registration = async (payload: RegistrationPayload) => {
   try {
     const data = await publicFetcher(
@@ -112,6 +116,22 @@ export const logout = async () => {
     return data;
   } catch (error) {
     console.warn('[LOGOUT ERROR]', error);
+    throw error;
+  }
+};
+
+export const resendVerifyEmail = async (payload: ResendVerifyEmailPayload) => {
+  try {
+    const data = await publicFetcher(
+      `${API_BASE_URL}/api/auth/resend-verify-mail`,
+      'POST',
+      {
+        body: JSON.stringify(payload),
+      }
+    );
+    return data;
+  } catch (error) {
+    console.warn('[RESEND VERIFY EMAIL ERROR]', error);
     throw error;
   }
 };

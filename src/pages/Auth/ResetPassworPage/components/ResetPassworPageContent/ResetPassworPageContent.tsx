@@ -1,17 +1,18 @@
 import { JSX, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './ResetPassworPageContent.scss';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { getApiErrorMessage } from '../../../../../lib/apiError';
+import { resetPassword } from '../../../../../api/auth';
+
 import { Card } from '../../../../../UI/components/Card/Card';
 import { OtpInput } from '../../../../../UI/inputs/OtpInput/OtpInput';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../../../../UI/components/Button/Button';
 import { Label } from '../../../../../UI/components/Label/Label';
 import { PasswordInput } from '../../../../../UI/inputs/PasswordInput/PasswordInput';
-import { resetPassword } from '../../../../../api/auth';
-import { getApiErrorMessage } from '../../../../../lib/apiError';
 import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
 
 const resetPassworSchema = z
@@ -35,8 +36,8 @@ type ResetPassworFormValues = z.infer<typeof resetPassworSchema>;
 
 export const ResetPassworPageContent = (): JSX.Element => {
   const [pivValue, setPinValue] = useState<string>('');
-  const navigate = useNavigate();
   const { token } = useParams<{ token: string }>();
+  const navigate = useNavigate();
   const { addToast } = useToast();
   const {
     register,

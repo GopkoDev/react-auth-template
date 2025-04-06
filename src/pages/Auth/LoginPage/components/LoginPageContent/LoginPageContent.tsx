@@ -1,18 +1,19 @@
 import { JSX } from 'react';
+import { Link } from 'react-router-dom';
 import './LoginPageContent.scss';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { login } from '../../../../../api/auth';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
+
 import { Card } from '../../../../../UI/components/Card/Card';
 import { Label } from '../../../../../UI/components/Label/Label';
 import { TextInput } from '../../../../../UI/inputs/TextInput/TextInput';
 import { Button } from '../../../../../UI/components/Button/Button';
-import { Link } from 'react-router-dom';
 import { PasswordInput } from '../../../../../UI/inputs/PasswordInput/PasswordInput';
-import { login } from '../../../../../api/auth';
 import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
-import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 const loginSchema = z.object({
   email: z

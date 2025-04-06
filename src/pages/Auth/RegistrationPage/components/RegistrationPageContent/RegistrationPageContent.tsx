@@ -1,18 +1,19 @@
 import { JSX } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './RegistrationPageContent.scss';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { registration } from '../../../../../api/auth';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
+
 import { Card } from '../../../../../UI/components/Card/Card';
 import { Label } from '../../../../../UI/components/Label/Label';
 import { TextInput } from '../../../../../UI/inputs/TextInput/TextInput';
 import { Button } from '../../../../../UI/components/Button/Button';
-import { Link, useNavigate } from 'react-router-dom';
 import { PasswordInput } from '../../../../../UI/inputs/PasswordInput/PasswordInput';
-import { registration } from '../../../../../api/auth';
 import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
-import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 const registrationSchema = z
   .object({
@@ -43,6 +44,9 @@ const registrationSchema = z
 type RegistrationFormValues = z.infer<typeof registrationSchema>;
 
 export const RegistrationPageContent = (): JSX.Element => {
+  const navigate = useNavigate();
+  const { addToast } = useToast();
+
   const {
     register,
     handleSubmit,
@@ -50,8 +54,6 @@ export const RegistrationPageContent = (): JSX.Element => {
   } = useForm<RegistrationFormValues>({
     resolver: zodResolver(registrationSchema),
   });
-  const navigate = useNavigate();
-  const { addToast } = useToast();
 
   const onSubmit = async (data: RegistrationFormValues) => {
     try {
@@ -82,9 +84,9 @@ export const RegistrationPageContent = (): JSX.Element => {
       <Card width="450px">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
-            <Card.Title>Sign In</Card.Title>
+            <Card.Title>Sign Up</Card.Title>
             <Card.Subtitle>
-              Enter your credentials to access your account
+              Fill in your details to create a new account
             </Card.Subtitle>
           </Card.Header>
           <Card.Body>

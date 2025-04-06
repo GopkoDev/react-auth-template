@@ -1,20 +1,37 @@
 import { JSX } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './VerifyEmailPageContent.scss';
 
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { resendVerifyEmail, verifyEmail } from '../../../../../api/auth';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
+
 import { Card } from '../../../../../UI/components/Card/Card';
 import { OtpInput } from '../../../../../UI/inputs/OtpInput/OtpInput';
 import { Button } from '../../../../../UI/components/Button/Button';
-import { verifyEmail } from '../../../../../api/auth';
 import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
-import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 export const VerifyEmailPageContent = (): JSX.Element => {
+  const params = new URLSearchParams(window.location.search);
+  const email = params.get('email');
   const navigate = useNavigate();
   const { token } = useParams<{ token: string }>();
   const { addToast } = useToast();
-  const params = new URLSearchParams(window.location.search);
-  const email = params.get('email');
+
+  const resend = async () => {
+    if (email) {
+      try {
+        const data = await resendVerifyEmail({ email });
+        navigate(data.path);
+        addToast('Verification email resent successfully');
+      } catch (error) {
+        const errorMessage = getApiErrorMessage(error);
+        addToast(errorMessage, 'error');
+        console.warn('Resend email verification error:', error);
+      }
+    } else {
+      addToast('Email not provided', 'error');
+    }
+  };
 
   const onInputChange = async (value: string) => {
     if (value.length === 6 && token) {
@@ -48,12 +65,9 @@ export const VerifyEmailPageContent = (): JSX.Element => {
           </div>
           <div className="verify_email_page--subtitle">
             If you didn't receive the email,{' '}
-            <Link
-              className="verify_email_page--subtitle--link"
-              to="/resend-email"
-            >
+            <p className="verify_email_page--subtitle--link" onClick={resend}>
               click here to resend it
-            </Link>
+            </p>
           </div>
         </Card.Body>
         <Card.Footer>

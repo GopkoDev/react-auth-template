@@ -1,7 +1,9 @@
 import { JSX } from 'react';
-import { Button } from '../../../UI/components/Button/Button';
-import { logout } from '../../../api/auth';
+
 import { userStore } from '../../../store/user-store';
+import { logout } from '../../../api/auth';
+
+import { Button } from '../../../UI/components/Button/Button';
 
 export const UserSettingsPageContent = (): JSX.Element => {
   const handleLogout = async () => {
@@ -13,6 +15,7 @@ export const UserSettingsPageContent = (): JSX.Element => {
       console.warn('[LOGOUT ERROR]', error);
     }
   };
+
   return (
     <div style={{ margin: 'auto 0', width: '300px' }}>
       <Button width="100%" variant="outlined" onClick={handleLogout}>

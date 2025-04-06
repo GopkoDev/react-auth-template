@@ -1,17 +1,18 @@
 import { JSX } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './ForgotPasswordPageContent.scss';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { forgotPassword } from '../../../../../api/auth';
+import { getApiErrorMessage } from '../../../../../lib/apiError';
+
 import { Card } from '../../../../../UI/components/Card/Card';
 import { Label } from '../../../../../UI/components/Label/Label';
 import { TextInput } from '../../../../../UI/inputs/TextInput/TextInput';
 import { Button } from '../../../../../UI/components/Button/Button';
-import { forgotPassword } from '../../../../../api/auth';
 import { useToast } from '../../../../../UI/components/Toast/ToastProvider';
-import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 const forgotPasswordSchema = z.object({
   email: z
@@ -23,6 +24,8 @@ const forgotPasswordSchema = z.object({
 type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
 
 export const ForgotPasswordPageContent = (): JSX.Element => {
+  const navigate = useNavigate();
+  const { addToast } = useToast();
   const {
     register,
     handleSubmit,
@@ -30,8 +33,6 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
   } = useForm<ForgotPasswordValues>({
     resolver: zodResolver(forgotPasswordSchema),
   });
-  const navigate = useNavigate();
-  const { addToast } = useToast();
 
   const onSubmit = async (data: ForgotPasswordValues) => {
     try {
