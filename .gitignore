@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 *storybook.log
+
+# Environment files
+.env
+.env.*
+!.env.example
