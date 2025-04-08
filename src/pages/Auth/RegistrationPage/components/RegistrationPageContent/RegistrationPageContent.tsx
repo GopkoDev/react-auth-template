@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { registration } from '../../../../../api/auth';
+import { registration } from '../../helpers/api';
 import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 import { Card } from '../../../../../UI/components/Card/Card';
@@ -61,7 +61,7 @@ export const RegistrationPageContent = (): JSX.Element => {
       const { confirmPassword, ...payload } = data;
 
       const response = await registration(payload);
-      if (response.path) {
+      if (response.success) {
         navigate(response.path);
       }
     } catch (error) {

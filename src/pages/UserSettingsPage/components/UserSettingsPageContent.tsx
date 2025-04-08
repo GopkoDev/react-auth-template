@@ -1,14 +1,17 @@
 import { JSX } from 'react';
 
 import { userStore } from '../../../store/user-store';
-import { logout } from '../../../api/auth';
 
 import { Button } from '../../../UI/components/Button/Button';
+import { publicFetcher } from '../../../lib/publicFetcher';
 
 export const UserSettingsPageContent = (): JSX.Element => {
   const handleLogout = async () => {
     try {
-      await logout();
+      await publicFetcher(
+        `${import.meta.env.VITE_SERVER_URL}/api/auth/logout`,
+        'POST'
+      );
       userStore.clearUser();
       window.location.href = '/';
     } catch (error) {

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { forgotPassword } from '../../../../../api/auth';
+import { forgotPassword } from '../../helpers/api';
 import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 import { Card } from '../../../../../UI/components/Card/Card';

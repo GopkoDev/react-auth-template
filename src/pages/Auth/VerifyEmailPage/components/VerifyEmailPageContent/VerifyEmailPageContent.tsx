@@ -2,7 +2,7 @@ import { JSX } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './VerifyEmailPageContent.scss';
 
-import { resendVerifyEmail, verifyEmail } from '../../../../../api/auth';
+import { resendVerifyEmail, verifyEmail } from '../../helpers/api';
 import { getApiErrorMessage } from '../../../../../lib/apiError';
 
 import { Card } from '../../../../../UI/components/Card/Card';

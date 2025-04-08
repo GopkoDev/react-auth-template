@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { getApiErrorMessage } from '../../../../../lib/apiError';
-import { resetPassword } from '../../../../../api/auth';
+import { resetPassword } from '../../helpers/api';
 
 import { Card } from '../../../../../UI/components/Card/Card';
 import { OtpInput } from '../../../../../UI/inputs/OtpInput/OtpInput';
