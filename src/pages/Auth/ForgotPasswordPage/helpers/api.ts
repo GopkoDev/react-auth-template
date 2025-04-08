@@ -6,7 +6,15 @@ export interface ForgotPasswordPayload {
   email: string;
 }
 
-export const forgotPassword = async (payload: ForgotPasswordPayload) => {
+export interface ForgotPasswordResponse {
+  message: string;
+  email: string;
+  path: string;
+}
+
+export const forgotPassword = async (
+  payload: ForgotPasswordPayload
+): Promise<ForgotPasswordResponse> => {
   try {
     const data = await publicFetcher(
       `${API_BASE_URL}/api/auth/forgot-password`,

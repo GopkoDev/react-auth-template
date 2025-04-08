@@ -8,6 +8,10 @@ export interface ResetPasswordPayload {
   password: string;
 }
 
+export interface ResetPasswordResponse {
+  message: string;
+}
+
 export const resetPassword = async (payload: ResetPasswordPayload) => {
   try {
     const data = await publicFetcher(

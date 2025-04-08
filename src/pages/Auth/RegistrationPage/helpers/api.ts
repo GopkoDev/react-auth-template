@@ -8,16 +8,11 @@ export interface RegistrationPayload {
   name?: string;
 }
 
-export type RegistrationResponse =
-  | {
-      success: true;
-      message: string;
-      path: string;
-    }
-  | {
-      success: false;
-      error: string;
-    };
+export type RegistrationResponse = {
+  success: true;
+  message: string;
+  path: string;
+};
 
 export const registration = async (
   payload: RegistrationPayload

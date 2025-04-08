@@ -1,4 +1,5 @@
 import { publicFetcher } from '../../../../../lib/publicFetcher';
+import { User } from '../../../../../types/user-types';
 
 const API_BASE_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -7,7 +8,13 @@ export interface LoginPayload {
   password: string;
 }
 
-export const login = async (payload: LoginPayload) => {
+export interface LoginResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: User;
+}
+
+export const login = async (payload: LoginPayload): Promise<LoginResponse> => {
   try {
     const data = await publicFetcher(`${API_BASE_URL}/api/auth/login`, 'POST', {
       body: JSON.stringify(payload),
