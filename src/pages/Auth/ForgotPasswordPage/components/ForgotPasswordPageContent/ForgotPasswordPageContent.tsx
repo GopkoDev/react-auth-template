@@ -51,11 +51,6 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
   return (
     <section className="forgot_passwor_page">
       <h1 className="forgot_passwor_page--title">Password reset</h1>
-      <h3 className="forgot_passwor_page--subtitle">
-        <Link className="forgot_passwor_page--subtitle--link" to="/login">
-          Back to login
-        </Link>
-      </h3>
 
       <Card width="400px">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -82,6 +77,12 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
           </Card.Footer>
         </form>
       </Card>
+
+      <h3 className="forgot_passwor_page--subtitle">
+        <Link className="forgot_passwor_page--subtitle--link" to="/login">
+          Back to login
+        </Link>
+      </h3>
     </section>
   );
 };

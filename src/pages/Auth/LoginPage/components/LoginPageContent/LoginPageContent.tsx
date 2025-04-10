@@ -91,12 +91,11 @@ export const LoginPageContent = (): JSX.Element => {
     <section className="login_page">
       {!isMfa && (
         <>
-          <h1 className="login_page--title">Sign in to your account</h1>
+          <h1 className="login_page--title">Sign in</h1>
 
           <Card width="400px">
             <form onSubmit={handleSubmit(onSubmit)}>
               <Card.Header>
-                <Card.Title>Sign In</Card.Title>
                 <Card.Subtitle>
                   Enter your credentials to access your account
                 </Card.Subtitle>

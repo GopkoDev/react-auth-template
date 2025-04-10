@@ -3,13 +3,25 @@
 }
 
 body {
+  background-color: var(--main_surface);
   font-family: var(--font_geist);
   font-size: 14px;
   line-height: 125%;
   color: var(--primary_text);
-  background-color: var(--main_surface);
   height: 100dvh;
   overflow: hidden;
+  z-index: 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/gplay.png');
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 body.sb-show-main {
@@ -22,7 +34,8 @@ body.sb-show-main {
 
 :root {
   /* palette */
-  --background: #000; /* Dark background */
+  // --background: #000; /* Dark background */
+  --background: #120014; /* Dark background */
   --foreground: #f4f4f5; /* Light foreground text */
   --muted: #71717a; /* Muted text */
   --muted-foreground: #a1a1aa; /* Muted foreground text */

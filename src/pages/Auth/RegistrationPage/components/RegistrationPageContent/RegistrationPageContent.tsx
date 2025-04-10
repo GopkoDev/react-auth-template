@@ -73,18 +73,11 @@ export const RegistrationPageContent = (): JSX.Element => {
 
   return (
     <section className="registration_page">
-      <h1 className="registration_page--title">Create new account</h1>
-      <h3 className="registration_page--subtitle">
-        Or{' '}
-        <Link className="registration_page--subtitle--link" to="/login">
-          log in to your account
-        </Link>
-      </h3>
+      <h1 className="registration_page--title">Sign Up</h1>
 
       <Card width="400px">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
-            <Card.Title>Sign Up</Card.Title>
             <Card.Subtitle>
               Fill in your details to create a new account
             </Card.Subtitle>
@@ -135,6 +128,13 @@ export const RegistrationPageContent = (): JSX.Element => {
           </Card.Footer>
         </form>
       </Card>
+
+      <h3 className="registration_page--subtitle">
+        Or{' '}
+        <Link className="registration_page--subtitle--link" to="/login">
+          log in to your account
+        </Link>
+      </h3>
     </section>
   );
 };

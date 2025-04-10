@@ -9,7 +9,7 @@ export interface RegistrationPayload {
 }
 
 export type RegistrationResponse = {
-  success: true;
+  success: boolean;
   message: string;
   path: string;
 };
