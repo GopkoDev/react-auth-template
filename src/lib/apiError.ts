@@ -1,7 +1,9 @@
 interface ApiErrorResponse {
   error: string;
   code?: string;
-  details?: Record<string, unknown>;
+  details?: {
+    [key: string]: unknown;
+  };
 }
 
 export class ApiError extends Error {

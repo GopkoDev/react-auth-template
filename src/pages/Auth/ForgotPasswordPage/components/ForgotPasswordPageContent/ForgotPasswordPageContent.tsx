@@ -57,7 +57,7 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
         </Link>
       </h3>
 
-      <Card width="450px">
+      <Card width="400px">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
             <Card.Subtitle>

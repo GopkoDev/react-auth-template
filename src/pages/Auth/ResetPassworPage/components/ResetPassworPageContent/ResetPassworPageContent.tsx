@@ -62,7 +62,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
         password: data.password,
       });
       if (response.message === 'Password reset successfully') {
-        localStorage.setItem('accessToken', response.accessToken);
+        addToast(response.message);
         navigate('/login');
       }
     } catch (error) {
@@ -73,7 +73,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
   };
   return (
     <section className="reset_passwor_page">
-      <Card width="450px">
+      <Card width="400px">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
             <Card.Title>Сreate new password</Card.Title>
