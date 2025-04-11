@@ -9,7 +9,7 @@ export const ForgotPasswordPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PublicLayout>
+    <PublicLayout pageTitle="Forgot Password">
       <ForgotPasswordPageContent />
       <Loader isOpen={isLoading} />
     </PublicLayout>

@@ -10,7 +10,7 @@ export const RegistrationPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PublicLayout>
+    <PublicLayout pageTitle="Registration">
       <RegistrationPageContent />
       <Loader isOpen={isLoading} />
     </PublicLayout>

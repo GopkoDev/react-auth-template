@@ -1,14 +1,22 @@
 import { JSX } from 'react';
 import './PublicLayout.scss';
+import { SEO } from '../../components/Seo/Seo';
 
 interface PublicLayoutProps {
   customClassName?: string;
   children: React.ReactNode;
+  pageTitle?: string;
 }
 
 export const PublicLayout = ({
   customClassName = '',
+  pageTitle = '',
   children,
 }: PublicLayoutProps): JSX.Element => {
-  return <main className={`public_layout ${customClassName}`}>{children}</main>;
+  return (
+    <>
+      <SEO title={pageTitle} />
+      <main className={`public_layout ${customClassName}`}>{children}</main>;
+    </>
+  );
 };

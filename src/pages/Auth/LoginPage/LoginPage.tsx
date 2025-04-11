@@ -10,7 +10,7 @@ export const LoginPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PublicLayout>
+    <PublicLayout pageTitle="Login">
       <LoginPageContent />
       <Loader isOpen={isLoading} />
     </PublicLayout>

@@ -73,7 +73,7 @@ export const RegistrationPageContent = (): JSX.Element => {
 
   return (
     <section className="registration_page">
-      <h1 className="registration_page--title">Sign Up</h1>
+      <h1 className="registration_page--title">Registration</h1>
 
       <Card>
         <form onSubmit={handleSubmit(onSubmit)}>

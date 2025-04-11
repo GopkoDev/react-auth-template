@@ -9,7 +9,7 @@ export const ResetPassworPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PublicLayout>
+    <PublicLayout pageTitle="New Password">
       <ResetPassworPageContent />
       <Loader isOpen={isLoading} />
     </PublicLayout>

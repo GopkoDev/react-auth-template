@@ -9,7 +9,7 @@ export const VerifyEmailPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PublicLayout>
+    <PublicLayout pageTitle="Email Confirmation">
       <VerifyEmailPageContent />
       <Loader isOpen={isLoading} />
     </PublicLayout>

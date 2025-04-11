@@ -10,7 +10,7 @@ export const UserSettingsPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PrivateLayout customClassName="login_page">
+    <PrivateLayout pageTitle="User Settings">
       <UserSettingsPageContent />
       <Loader isOpen={isLoading} />
     </PrivateLayout>

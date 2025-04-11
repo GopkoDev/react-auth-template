@@ -91,7 +91,7 @@ export const LoginPageContent = (): JSX.Element => {
     <section className="login_page">
       {!isMfa && (
         <>
-          <h1 className="login_page--title">Sign in</h1>
+          <h1 className="login_page--title">Login</h1>
 
           <Card>
             <form onSubmit={handleSubmit(onSubmit)}>
