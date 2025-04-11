@@ -29,7 +29,6 @@ class UserStore {
 
   clearUser() {
     this.user = { id: null, name: null, email: null };
-    localStorage.removeItem('accessToken');
   }
 }
 

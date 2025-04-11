@@ -17,7 +17,7 @@ const meta: Meta<typeof Card> = {
     },
   },
   argTypes: {
-    width: {
+    maxWidth: {
       control: 'text',
       description: 'Sets the maximum width of the card',
     },
@@ -30,7 +30,7 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   args: {
-    width: '400px',
+    maxWidth: '400px',
   },
   render: (args: CardProps) => (
     <Card {...args}>

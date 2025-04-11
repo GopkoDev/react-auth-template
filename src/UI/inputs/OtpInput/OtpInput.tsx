@@ -17,11 +17,10 @@ export const OtpInput: React.FC<OtpInputProps> = ({
 
   const handleChange = (value: string, index: number) => {
     const newOtp = [...otp];
-    newOtp[index] = value.slice(-1); // Беремо тільки останній символ
+    newOtp[index] = value.slice(-1);
     setOtp(newOtp);
     onChange(newOtp.join(''));
 
-    // Перехід до наступного поля
     if (value && index < length - 1) {
       inputsRef.current[index + 1]?.focus();
     }
@@ -50,7 +49,6 @@ export const OtpInput: React.FC<OtpInputProps> = ({
     setOtp(newOtp);
     onChange(newOtp.join(''));
 
-    // Переміщення фокусу на останній заповнений інпут
     const lastFilledIndex = Math.min(pastedData.length, length) - 1;
     inputsRef.current[lastFilledIndex]?.focus();
   };

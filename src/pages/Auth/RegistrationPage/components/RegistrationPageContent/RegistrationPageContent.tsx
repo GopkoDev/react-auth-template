@@ -75,7 +75,7 @@ export const RegistrationPageContent = (): JSX.Element => {
     <section className="registration_page">
       <h1 className="registration_page--title">Sign Up</h1>
 
-      <Card width="400px">
+      <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
             <Card.Subtitle>

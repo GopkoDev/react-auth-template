@@ -2,13 +2,13 @@ import React, { JSX } from 'react';
 import './Card.scss';
 
 export interface CardProps {
-  width?: string;
+  maxWidth?: string;
   children: React.ReactNode;
 }
 
-const Card = ({ children, width = '100%' }: CardProps): JSX.Element => {
+const Card = ({ children, maxWidth = '450px' }: CardProps): JSX.Element => {
   return (
-    <div style={{ width: width }} className="card">
+    <div style={{ maxWidth }} className="card">
       {children}
     </div>
   );

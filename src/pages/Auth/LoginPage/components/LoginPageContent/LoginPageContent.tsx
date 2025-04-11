@@ -93,7 +93,7 @@ export const LoginPageContent = (): JSX.Element => {
         <>
           <h1 className="login_page--title">Sign in</h1>
 
-          <Card width="400px">
+          <Card>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Card.Header>
                 <Card.Subtitle>
@@ -146,7 +146,7 @@ export const LoginPageContent = (): JSX.Element => {
             Please enter the verification code from your authenticator app
           </h3>
 
-          <Card width="400px">
+          <Card>
             <Card.Header>
               <Card.Title>Enter Authentication Code</Card.Title>
               <Card.Subtitle>

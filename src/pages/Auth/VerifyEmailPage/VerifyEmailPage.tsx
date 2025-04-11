@@ -9,7 +9,7 @@ export const VerifyEmailPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
-    <PublicLayout customClassName="login_page">
+    <PublicLayout>
       <VerifyEmailPageContent />
       <Loader isOpen={isLoading} />
     </PublicLayout>

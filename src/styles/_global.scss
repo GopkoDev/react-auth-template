@@ -34,16 +34,14 @@ body.sb-show-main {
 
 :root {
   /* palette */
-  // --background: #000; /* Dark background */
   --background: #120014; /* Dark background */
   --foreground: #f4f4f5; /* Light foreground text */
   --muted: #71717a; /* Muted text */
   --muted-foreground: #a1a1aa; /* Muted foreground text */
   --border: #3f3f46; /* Border color */
-  --input: #3f3f46; /* Input background */
   --primary: #7c3aed; /* Primary accent color */
   --primary-foreground: #ffffff; /* Text on primary */
-  --secondary: #3f3f46; /* Secondary background */
+  --secondary: #361f39; /* Secondary background */
   --secondary-foreground: #e4e4e7; /* Text on secondary */
   --accent: #22d3ee; /* Accent color */
   --accent-foreground: #ffffff; /* Text on accent */
@@ -62,7 +60,6 @@ body.sb-show-main {
   --main_surface: var(--background);
   --secondary_surface: var(--secondary);
   --accent_surface: var(--accent);
-  --additional_background: #1e1e2a; /* Slightly lighter background */
 
   /* border */
   --border_color: var(--border);

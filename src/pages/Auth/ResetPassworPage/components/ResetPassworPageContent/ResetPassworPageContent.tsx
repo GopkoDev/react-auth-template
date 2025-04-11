@@ -73,7 +73,7 @@ export const ResetPassworPageContent = (): JSX.Element => {
   };
   return (
     <section className="reset_passwor_page">
-      <Card width="400px">
+      <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
             <Card.Title>Сreate new password</Card.Title>

@@ -32,4 +32,11 @@
     border-color: var(--error_input);
     color: var(--error_input);
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--primary_text);
+    -webkit-box-shadow: 0 0 0px 40rem var(--secondary_surface) inset;
+  }
 }

@@ -7,7 +7,7 @@ interface PublicLayoutProps {
 }
 
 export const PublicLayout = ({
-  customClassName,
+  customClassName = '',
   children,
 }: PublicLayoutProps): JSX.Element => {
   return <main className={`public_layout ${customClassName}`}>{children}</main>;

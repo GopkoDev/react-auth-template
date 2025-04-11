@@ -12,6 +12,7 @@ export const UserSettingsPageContent = (): JSX.Element => {
         `${import.meta.env.VITE_SERVER_URL}/api/auth/logout`,
         'POST'
       );
+      localStorage.removeItem('accessToken');
       userStore.clearUser();
       window.location.href = '/';
     } catch (error) {

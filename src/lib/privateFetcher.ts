@@ -32,6 +32,7 @@ export const privateFetcher = async (
 
     if (!refreshResponse.ok) {
       userStore.clearUser();
+      localStorage.removeItem('accessToken');
       window.location.href = '/login';
       return handleApiError(refreshResponse);
     }

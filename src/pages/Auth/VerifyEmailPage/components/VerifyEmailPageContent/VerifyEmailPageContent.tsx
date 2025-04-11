@@ -51,7 +51,7 @@ export const VerifyEmailPageContent = (): JSX.Element => {
 
   return (
     <section className="verify_email_page">
-      <Card width="600px">
+      <Card>
         <Card.Header>
           <Card.Title>Сonfirm your email</Card.Title>
           <Card.Subtitle>

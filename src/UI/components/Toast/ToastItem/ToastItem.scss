@@ -10,15 +10,20 @@
 
   &--message {
     font-size: 14px;
-    font-weight: 500;
-    margin: 0;
+  }
+
+  &--error,
+  &--info {
+    border-right: 4px solid;
+    background-color: var(--secondary_surface);
+    border-radius: var(--border_radius) 0 0 var(--border_radius);
   }
 
   &--error {
-    border-bottom: 2px solid var(--error_border_color);
+    border-color: var(--error_border_color);
   }
   &--info {
-    border-bottom: 2px solid var(--primary_border_color);
+    border-color: var(--primary_border_color);
   }
 }
 

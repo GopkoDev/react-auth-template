@@ -52,7 +52,7 @@ export const ForgotPasswordPageContent = (): JSX.Element => {
     <section className="forgot_passwor_page">
       <h1 className="forgot_passwor_page--title">Password reset</h1>
 
-      <Card width="400px">
+      <Card>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card.Header>
             <Card.Subtitle>
