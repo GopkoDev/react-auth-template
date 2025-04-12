@@ -1,14 +1,13 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { SettingsPage } from './pages/SettingsPage/SettingsPage';
-
 import { LoginPage } from './pages/Auth/LoginPage/LoginPage';
 import { ForgotPasswordPage } from './pages/Auth/ForgotPasswordPage/ForgotPasswordPage';
 import { RegistrationPage } from './pages/Auth/RegistrationPage/RegistrationPage';
 import { ResetPassworPage } from './pages/Auth/ResetPassworPage/ResetPassworPage';
 import { VerifyEmailPage } from './pages/Auth/VerifyEmailPage/VerifyEmailPage';
 import { MainPage } from './pages/MainPage/MainPage';
+import { SettingsPage } from './pages/SettingsPage/SettingsPage';
 
 export interface RouteType {
   path: string;
