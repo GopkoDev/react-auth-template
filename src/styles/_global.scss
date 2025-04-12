@@ -57,7 +57,7 @@ body.sb-show-main {
   --primary-foreground: #ffffff; /* Text on primary */
   --secondary: #222425; /* Secondary background */
   --secondary-foreground: #e4e4e7; /* Text on secondary */
-  --accent: #22d3ee; /* Accent color */
+  --accent: #7c3aed; /* Accent color */
   --accent-foreground: #ffffff; /* Text on accent */
   --destructive: #ef4444; /* Error/destructive color */
   --destructive-foreground: #ffffff; /* Text on destructive */
@@ -69,6 +69,7 @@ body.sb-show-main {
   --secondary_text: var(--muted);
   --placeholder_text: var(--muted-foreground);
   --error_text: var(--destructive);
+  --accent_text: var(--accent);
 
   /* surface */
   --main_surface: var(--background);
