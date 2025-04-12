@@ -1,4 +1,4 @@
-import { userStore } from '../store/user-store';
+import userStore from '../store/user-store';
 import { handleApiError } from './apiError';
 
 export const privateFetcher = async (

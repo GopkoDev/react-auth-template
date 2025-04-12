@@ -16,7 +16,6 @@ export interface RouteType {
 
 const privateRoutes: RouteType[] = [
   { path: '/', element: <MainPage /> },
-
   { path: '/settings/:tab', element: <SettingsPage /> },
   {
     path: '*',

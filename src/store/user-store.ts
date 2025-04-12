@@ -1,12 +1,24 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import { privateFetcher } from '../lib/privateFetcher';
 
+interface User {
+  id: string | null;
+  name: string | null;
+  email: string | null;
+  avatar: string | null;
+  twoFactorEnabled: boolean;
+}
+
+const initialUser = {
+  id: null,
+  name: null,
+  email: null,
+  avatar: null,
+  twoFactorEnabled: false,
+};
+
 class UserStore {
-  user = {
-    id: null as string | null,
-    name: null as string | null,
-    email: null as string | null,
-  };
+  user: User = initialUser;
 
   constructor() {
     makeAutoObservable(this);
@@ -18,7 +30,9 @@ class UserStore {
         `${import.meta.env.VITE_SERVER_URL}/api/user`
       );
 
-      this.user = data;
+      runInAction(() => {
+        this.user = data.user;
+      });
 
       return data;
     } catch (error) {
@@ -28,8 +42,10 @@ class UserStore {
   }
 
   clearUser() {
-    this.user = { id: null, name: null, email: null };
+    runInAction(() => {
+      this.user = initialUser;
+    });
   }
 }
 
-export const userStore = new UserStore();
+export default new UserStore();

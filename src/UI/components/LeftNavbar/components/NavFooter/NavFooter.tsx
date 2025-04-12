@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { userStore } from '../../../../../store/user-store';
+import userStore from '../../../../../store/user-store';
 import { publicFetcher } from '../../../../../lib/publicFetcher';
 import { Button } from '../../../Button/Button';
 

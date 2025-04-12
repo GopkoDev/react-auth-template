@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom';
 import { getRoutes } from './Routes';
 import { useEffect } from 'react';
-import { userStore } from './store/user-store';
+import userStore from './store/user-store';
 import loaderStore from './store/loader-store';
 import { ToastProvider } from './UI/components/Toast/ToastProvider';
 import { ToastContainer } from './UI/components/Toast/ToastContainer/ToastContainer';
