@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { UserSettingsPage } from './pages/UserSettingsPage/UserSettingsPage';
+import { SettingsPage } from './pages/SettingsPage/SettingsPage';
 
 import { LoginPage } from './pages/Auth/LoginPage/LoginPage';
 import { ForgotPasswordPage } from './pages/Auth/ForgotPasswordPage/ForgotPasswordPage';
@@ -18,7 +18,7 @@ export interface RouteType {
 const privateRoutes: RouteType[] = [
   { path: '/', element: <MainPage /> },
 
-  { path: '/settings/:tab', element: <UserSettingsPage /> },
+  { path: '/settings/:tab', element: <SettingsPage /> },
   {
     path: '*',
     element: <Navigate to="/" />,
