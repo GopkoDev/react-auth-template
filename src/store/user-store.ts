@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { privateFetcher } from '../lib/privateFetcher';
 import { User } from '../types/user-types';
+import { GenerateMfa } from '../types/two-factor';
 
 export type UserStoreStateType = Partial<User>;
 
@@ -16,10 +17,10 @@ class UserStore {
   user: UserStoreStateType = initialUser;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { deep: true });
   }
 
-  async fetchUser() {
+  async fetchUser(): Promise<User> {
     try {
       const data = await privateFetcher(
         `${import.meta.env.VITE_SERVER_URL}/api/user`

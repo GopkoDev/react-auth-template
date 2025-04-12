@@ -4,7 +4,7 @@ class LoaderStore {
   isLoading: boolean = false;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { deep: true });
   }
 
   setIsLoading(): void {
