@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { Switcher } from './SwitchButton';
+import { SwitchButton } from './SwitchButton';
 
 export default {
   title: 'UI/Switcher',
-  component: Switcher,
+  component: SwitchButton,
   parameters: {
     layout: 'centered',
   },
@@ -16,9 +16,9 @@ export default {
     onChange: { action: 'changed' },
     disabled: { control: 'boolean' },
   },
-} as Meta<typeof Switcher>;
+} as Meta<typeof SwitchButton>;
 
-const Template: StoryFn<typeof Switcher> = (args) => {
+const Template: StoryFn<typeof SwitchButton> = (args) => {
   const [isChecked, setIsChecked] = useState(args.isChecked || false);
 
   const handleChange = (checked: boolean) => {
@@ -26,7 +26,9 @@ const Template: StoryFn<typeof Switcher> = (args) => {
     args.onChange(checked);
   };
 
-  return <Switcher {...args} isChecked={isChecked} onChange={handleChange} />;
+  return (
+    <SwitchButton {...args} isChecked={isChecked} onChange={handleChange} />
+  );
 };
 
 export const Default = Template.bind({});

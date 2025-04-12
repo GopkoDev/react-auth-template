@@ -1,15 +1,16 @@
 import { JSX } from 'react';
 import './SecuritySettings.scss';
+import { PasswordSettings } from '../PasswordSettings/PasswordSettings';
+import { MfaSettings } from '../MfaSettings/MfaSettings';
+import userStore from '../../../../store/user-store';
+import { observer } from 'mobx-react-lite';
 
-export const SecuritySettings = (): JSX.Element => {
+export const SecuritySettings = observer((): JSX.Element => {
+  const user = userStore.user;
   return (
     <section className="security_settings">
-      <div className="security_settings--header">
-        <h2>Security Settings</h2>
-      </div>
-      <div className="security_settings--content">
-        <p>Security settings content goes here.</p>
-      </div>
+      <PasswordSettings />
+      <MfaSettings user={user} />
     </section>
   );
-};
+});

@@ -2,14 +2,14 @@ import React, { JSX } from 'react';
 import './SwitchButton.scss';
 
 interface SwitcherProps {
-  isChecked: boolean;
+  isChecked?: boolean;
   onChange: (checked: boolean) => void;
   label?: string;
   disabled?: boolean;
 }
 
-export const Switcher = ({
-  isChecked,
+export const SwitchButton = ({
+  isChecked = false,
   onChange,
   label = '',
   disabled = false,
