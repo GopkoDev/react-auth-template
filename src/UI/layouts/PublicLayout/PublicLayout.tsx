@@ -16,7 +16,10 @@ export const PublicLayout = ({
   return (
     <>
       <SEO title={pageTitle} />
-      <main className={`public_layout ${customClassName}`}>{children}</main>;
+      <main className={`public_layout ${customClassName} background_image`}>
+        {children}
+      </main>
+      ;
     </>
   );
 };

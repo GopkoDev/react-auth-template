@@ -1,21 +1,20 @@
 import { JSX } from 'react';
-import { observer } from 'mobx-react-lite';
-import loaderStore from '../../store/loader-store';
-
-import { UserSettingsPageContent } from './components/UserSettingsPageContent';
+import { MainPageContent } from './components/MainPageContent/MainPageContent';
 import { Loader } from '../../UI/components/Loader/Loader';
+import loaderStore from '../../store/loader-store';
+import { observer } from 'mobx-react-lite';
 import { PrivateLayout } from '../../UI/layouts/PrivateLayout/PrivateLayout';
 import { PageHeader } from '../../UI/components/PageHeader/PageHeader';
 
-const pageTitle = 'Settings';
+const pageTitle = 'Main Page';
 
-export const UserSettingsPage = observer((): JSX.Element => {
+export const MainPage = observer((): JSX.Element => {
   const { isLoading } = loaderStore;
 
   return (
     <PrivateLayout pageTitle={pageTitle}>
       <PageHeader pageName={pageTitle} />
-      <UserSettingsPageContent />
+      <MainPageContent />
       <Loader isOpen={isLoading} />
     </PrivateLayout>
   );

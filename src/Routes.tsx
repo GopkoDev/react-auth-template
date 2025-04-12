@@ -8,6 +8,7 @@ import { ForgotPasswordPage } from './pages/Auth/ForgotPasswordPage/ForgotPasswo
 import { RegistrationPage } from './pages/Auth/RegistrationPage/RegistrationPage';
 import { ResetPassworPage } from './pages/Auth/ResetPassworPage/ResetPassworPage';
 import { VerifyEmailPage } from './pages/Auth/VerifyEmailPage/VerifyEmailPage';
+import { MainPage } from './pages/MainPage/MainPage';
 
 export interface RouteType {
   path: string;
@@ -15,10 +16,12 @@ export interface RouteType {
 }
 
 const privateRoutes: RouteType[] = [
-  { path: '/user-settings', element: <UserSettingsPage /> },
+  { path: '/', element: <MainPage /> },
+
+  { path: '/settings/user', element: <UserSettingsPage /> },
   {
     path: '*',
-    element: <Navigate to="/user-settings" />,
+    element: <Navigate to="/" />,
   },
 ];
 

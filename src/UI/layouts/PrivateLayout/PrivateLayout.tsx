@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 import './PrivateLayout.scss';
 import { SEO } from '../../components/Seo/Seo';
+import { LeftNavbar } from '../../components/LeftNavbar/LeftNavbar';
 
 interface PrivateLayoutProps {
   customClassName?: string;
@@ -16,7 +17,10 @@ export const PrivateLayout = ({
   return (
     <>
       <SEO title={pageTitle} />
-      <main className={`private_layout ${customClassName}`}>{children}</main>
+      <main className={`private_layout ${customClassName}`}>
+        <LeftNavbar />
+        <section className="private_layout--content ">{children}</section>
+      </main>
     </>
   );
 };

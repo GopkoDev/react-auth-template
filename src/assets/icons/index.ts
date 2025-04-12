@@ -14,4 +14,4 @@ export { ArrowLeftIcon } from './files/ArrowLeftIcon';
 export { TrashIcon } from './files/TrashIcon';
 export { LockIcon } from './files/LockIcon';
 export { ExitIcon } from './files/ExitIcon';
-export { LogoIcon } from './files/LogoIcon';
+export { ActivityIcon } from './files/ActivityIcon';
