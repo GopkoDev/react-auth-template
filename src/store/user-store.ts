@@ -1,24 +1,19 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { privateFetcher } from '../lib/privateFetcher';
+import { User } from '../types/user-types';
 
-interface User {
-  id: string | null;
-  name: string | null;
-  email: string | null;
-  avatar: string | null;
-  twoFactorEnabled: boolean;
-}
+export type UserStoreStateType = Partial<User>;
 
-const initialUser = {
-  id: null,
-  name: null,
-  email: null,
-  avatar: null,
+const initialUser: UserStoreStateType = {
+  id: undefined,
+  name: undefined,
+  email: undefined,
+  avatar: undefined,
   twoFactorEnabled: false,
 };
 
 class UserStore {
-  user: User = initialUser;
+  user: UserStoreStateType = initialUser;
 
   constructor() {
     makeAutoObservable(this);
@@ -31,7 +26,7 @@ class UserStore {
       );
 
       runInAction(() => {
-        this.user = data.user;
+        this.user = data.user as User;
       });
 
       return data;

@@ -1,0 +1,20 @@
+.settings_item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 100px;
+  align-items: center;
+  padding: 24px 0;
+  &:is(:not(:first-child)) {
+    border-top: 1px solid var(--border_color);
+  }
+
+  &--label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary_text);
+  }
+
+  &--value {
+    font-size: 14px;
+    color: var(--primary_text);
+  }
+}

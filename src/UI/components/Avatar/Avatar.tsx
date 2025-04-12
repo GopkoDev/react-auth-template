@@ -3,10 +3,13 @@ import './Avatar.scss';
 
 interface AvatarProps {
   src?: string;
-  userName: string;
+  userName?: string;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ src, userName = 'User' }) => {
+export const Avatar: React.FC<AvatarProps> = ({
+  src = '',
+  userName = '??',
+}) => {
   const [hasError, setHasError] = useState(false);
   const isFallback = !src || hasError;
 

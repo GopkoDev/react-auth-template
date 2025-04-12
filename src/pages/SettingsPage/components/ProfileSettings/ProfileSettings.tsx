@@ -1,15 +1,19 @@
 import { JSX } from 'react';
 import './ProfileSettings.scss';
+import { observer } from 'mobx-react-lite';
+import userStore from '../../../../store/user-store';
+import { PhotoSettings } from '../PhotoSettings/PhotoSettings';
+import { NameSettings } from '../NameSettings/NameSettings';
+import { EmailSettings } from '../EmailSettings/EmailSettings';
 
-export const ProfileSettings = (): JSX.Element => {
+export const ProfileSettings = observer((): JSX.Element => {
+  const user = userStore.user;
+
   return (
     <section className="profile_settings">
-      <div className="profile_settings--header">
-        <h2>Profile Settings</h2>
-      </div>
-      <div className="profile_settings--content">
-        <p>Profile settings content goes here.</p>
-      </div>
+      <PhotoSettings user={user} />
+      <NameSettings user={user} />
+      <EmailSettings user={user} />
     </section>
   );
-};
+});
