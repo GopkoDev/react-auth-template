@@ -18,7 +18,7 @@ export interface RouteType {
 const privateRoutes: RouteType[] = [
   { path: '/', element: <MainPage /> },
 
-  { path: '/settings/user', element: <UserSettingsPage /> },
+  { path: '/settings/:tab', element: <UserSettingsPage /> },
   {
     path: '*',
     element: <Navigate to="/" />,
