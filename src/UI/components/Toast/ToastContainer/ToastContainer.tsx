@@ -6,6 +6,10 @@ import './ToastContainer.scss';
 export const ToastContainer = () => {
   const { toasts, removeToast } = useToast();
 
+  if (toasts.length === 0) {
+    return null;
+  }
+
   return (
     <Portal containerId="toast-root">
       <div className="toast-container">

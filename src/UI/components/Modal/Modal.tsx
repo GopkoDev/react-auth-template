@@ -16,6 +16,7 @@ interface ModalHeaderProps {
 
 interface ModalBodyProps {
   children: ReactNode;
+  customClassName?: string;
 }
 
 interface ModalFooterProps {
@@ -66,8 +67,11 @@ export const ModalHeader = ({ children }: ModalHeaderProps): JSX.Element => (
   <div className="modal--header">{children}</div>
 );
 
-export const ModalBody = ({ children }: ModalBodyProps): JSX.Element => (
-  <div className="modal--body">{children}</div>
+export const ModalBody = ({
+  children,
+  customClassName,
+}: ModalBodyProps): JSX.Element => (
+  <div className={`modal--body ${customClassName}`}>{children}</div>
 );
 
 export const ModalFooter = ({ children }: ModalFooterProps): JSX.Element => (
