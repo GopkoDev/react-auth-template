@@ -1,0 +1,14 @@
+.mfa_disable_modal {
+  &--subtitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  &--input {
+    width: fit-content;
+    margin: 0 auto 24px auto;
+    &--label {
+      margin-bottom: 16px;
+    }
+  }
+}

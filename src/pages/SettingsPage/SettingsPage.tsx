@@ -6,6 +6,7 @@ import { SettingsPageContent } from './components/SettingsPageContent/SettingsPa
 import { Loader } from '../../UI/components/Loader/Loader';
 import { PrivateLayout } from '../../UI/layouts/PrivateLayout/PrivateLayout';
 import { PageHeader } from '../../UI/components/PageHeader/PageHeader';
+import { SettingsModalsContainer } from './components/SettingsModalsContainer/SettingsModalsContainer';
 
 const pageTitle = 'Settings';
 
@@ -16,6 +17,7 @@ export const SettingsPage = observer((): JSX.Element => {
     <PrivateLayout pageTitle={pageTitle}>
       <PageHeader pageName={pageTitle} />
       <SettingsPageContent />
+      <SettingsModalsContainer />
       <Loader isOpen={isLoading} />
     </PrivateLayout>
   );
