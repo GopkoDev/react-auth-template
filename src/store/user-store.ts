@@ -13,7 +13,7 @@ const initialUser: UserStoreStateType = {
   id: undefined,
   name: undefined,
   email: undefined,
-  avatar: undefined,
+  photoUrl: undefined,
   twoFactorEnabled: false,
 };
 
@@ -34,9 +34,39 @@ class UserStore {
         this.user = data.user as User;
       });
 
-      return data;
+      return data.user;
     } catch (error) {
       console.warn('Failed to fetch user:', error);
+      throw error;
+    }
+  };
+
+  updateProfile = async ({
+    name,
+    avatar,
+  }: {
+    name?: string;
+    avatar?: string;
+  }): Promise<User> => {
+    try {
+      const data = await privateFetcher(
+        `${import.meta.env.VITE_SERVER_URL}/api/user/profile`,
+        'PATCH',
+        {
+          body: JSON.stringify({
+            name,
+            avatar,
+          }),
+        }
+      );
+
+      runInAction(() => {
+        this.user = data.user as User;
+      });
+
+      return data.user;
+    } catch (error) {
+      console.warn('Failed to update user profile:', error);
       throw error;
     }
   };

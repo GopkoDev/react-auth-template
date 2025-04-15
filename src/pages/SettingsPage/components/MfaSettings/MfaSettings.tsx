@@ -27,19 +27,13 @@ export const MfaSettings = ({ user }: MfaSettingsProps): JSX.Element => {
           onConfirm: async (code: string) => {
             await verifyTwoFactor(code);
           },
-          onClose: () => {
-            modalStore.resetModalProps();
-          },
         });
       }
     } else {
       modalStore.updateModalProps({
         mfaDisableModal: true,
         onConfirm: async (code: string) => {
-          console.log(await disableTwoFactor(code));
-        },
-        onClose: () => {
-          modalStore.resetModalProps();
+          await disableTwoFactor(code);
         },
       });
     }

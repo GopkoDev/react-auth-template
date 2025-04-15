@@ -10,8 +10,19 @@ const MfaDisableModalLazy = React.lazy(
   () => import('../../../../UI/Modals/MfaDisableModal/MfaDisableModal')
 );
 
+const UpdateUserProfileModalLazy = React.lazy(
+  () =>
+    import(
+      '../../../../UI/Modals/UpdateUserProfileModal/UpdateUserProfileModal'
+    )
+);
+
 export const SettingsModalsContainer = observer((): JSX.Element => {
   const { modalProps } = modalStore;
+
+  const close = (): void => {
+    modalStore.resetModalProps();
+  };
 
   return (
     <>
@@ -19,7 +30,7 @@ export const SettingsModalsContainer = observer((): JSX.Element => {
         {modalProps.mfaModal && (
           <MfaModalLazy
             isOpen={modalProps.mfaModal}
-            onClose={modalProps.onClose}
+            onClose={close}
             qrCodeUrl={modalProps.qrCodeUrl}
             secret={modalProps.secret}
             onConfirm={modalProps.onConfirm}
@@ -31,7 +42,18 @@ export const SettingsModalsContainer = observer((): JSX.Element => {
         {modalProps.mfaDisableModal && (
           <MfaDisableModalLazy
             isOpen={modalProps.mfaDisableModal}
-            onClose={modalProps.onClose}
+            onClose={close}
+            onConfirm={modalProps.onConfirm}
+          />
+        )}
+      </React.Suspense>
+
+      <React.Suspense fallback={<span></span>}>
+        {modalProps.updateUserProfileModal && (
+          <UpdateUserProfileModalLazy
+            isOpen={modalProps.updateUserProfileModal}
+            onClose={close}
+            config={modalProps.config}
             onConfirm={modalProps.onConfirm}
           />
         )}

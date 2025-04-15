@@ -1,4 +1,4 @@
-import { JSX, useEffect, useRef, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import './MfaModal.scss';
 import {
   Modal,
