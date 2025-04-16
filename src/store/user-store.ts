@@ -114,8 +114,6 @@ class UserStore {
   disableTwoFactor = async (
     secret: string
   ): Promise<DisableTwoFactorResponse> => {
-    console.log(this);
-
     try {
       const data = (await privateFetcher(
         `${import.meta.env.VITE_SERVER_URL}/api/two-factor/disable`,

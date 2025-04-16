@@ -43,7 +43,6 @@ export const LoginPageContent = (): JSX.Element => {
   const onSubmit = async (data: LoginFormValues) => {
     try {
       const response = await login(data);
-      console.log(response);
       if (response.requiresTwoFactor) {
         setLoginCredentials(data);
         setIsMfa(true);
