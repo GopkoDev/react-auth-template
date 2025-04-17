@@ -39,7 +39,6 @@ export const PasswordSettings = (): JSX.Element => {
   const editHandler = (): void => {
     modalStore.updateModalProps({
       changeUserPasswordModal: true,
-      onclose: modalStore.resetModalProps,
       onConfirm: updatePassword,
     });
   };

@@ -1,0 +1,13 @@
+.change_email_modal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &--subtext {
+    color: var(--secondary_text);
+  }
+
+  &--otp_input {
+    margin: 0 auto;
+  }
+}

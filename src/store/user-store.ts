@@ -98,6 +98,52 @@ class UserStore {
     }
   };
 
+  initiateEmailChange = async (
+    newEmail: string
+  ): Promise<{ message: string; token: string }> => {
+    try {
+      const data = await privateFetcher(
+        `${import.meta.env.VITE_SERVER_URL}/api/user/email`,
+        'PATCH',
+        {
+          body: JSON.stringify({
+            newEmail,
+          }),
+        }
+      );
+      return data;
+    } catch (error) {
+      console.warn('Failed to initiate email change:', error);
+      throw error;
+    }
+  };
+
+  confirmEmailChange = async (
+    pin: string,
+    token: string
+  ): Promise<{ message: string; user: User }> => {
+    try {
+      const data = await privateFetcher(
+        `${import.meta.env.VITE_SERVER_URL}/api/user/email/verify`,
+        'PATCH',
+        {
+          body: JSON.stringify({
+            pin,
+            token,
+          }),
+        }
+      );
+
+      runInAction(() => {
+        this.user = data.user as User;
+      });
+      return data;
+    } catch (error) {
+      console.warn('Failed to confirm email change:', error);
+      throw error;
+    }
+  };
+
   enableTwoFactor = async (): Promise<GenerateMfaResponse> => {
     try {
       const data = (await privateFetcher(

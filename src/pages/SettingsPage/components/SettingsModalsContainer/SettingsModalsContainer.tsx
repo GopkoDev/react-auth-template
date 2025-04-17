@@ -24,6 +24,11 @@ const ChangeUserPasswordModalLazy = React.lazy(
     )
 );
 
+const ChangeUserEmailModalLazy = React.lazy(
+  () =>
+    import('../../../../UI/Modals/ChangeUserEmailModal/ChangeUserEmailModal')
+);
+
 export const SettingsModalsContainer = observer((): JSX.Element => {
   const { modalProps } = modalStore;
 
@@ -72,6 +77,17 @@ export const SettingsModalsContainer = observer((): JSX.Element => {
             isOpen={modalProps.changeUserPasswordModal}
             onClose={close}
             onConfirm={modalProps.onConfirm}
+          />
+        )}
+      </React.Suspense>
+
+      <React.Suspense fallback={<span></span>}>
+        {modalProps.changeUserEmailModal && (
+          <ChangeUserEmailModalLazy
+            isOpen={modalProps.changeUserEmailModal}
+            onClose={close}
+            onConfirmMail={modalProps.onConfirmMail}
+            onConfirmPin={modalProps.onConfirmPin}
           />
         )}
       </React.Suspense>

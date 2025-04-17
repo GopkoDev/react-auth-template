@@ -141,9 +141,6 @@ export const LoginPageContent = (): JSX.Element => {
       {isMfa && (
         <>
           <h1 className="login_page--title">Two-Factor Authentication</h1>
-          <h3 className="login_page--subtitle">
-            Please enter the verification code from your authenticator app
-          </h3>
 
           <Card>
             <Card.Header>
