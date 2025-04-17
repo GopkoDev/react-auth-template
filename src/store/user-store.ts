@@ -71,6 +71,33 @@ class UserStore {
     }
   };
 
+  updatePassword = async ({
+    currentPassword,
+    newPassword,
+    logoutAllDevices = false,
+  }: {
+    currentPassword: string;
+    newPassword: string;
+    logoutAllDevices?: boolean;
+  }): Promise<void> => {
+    try {
+      await privateFetcher(
+        `${import.meta.env.VITE_SERVER_URL}/api/user/password`,
+        'PATCH',
+        {
+          body: JSON.stringify({
+            currentPassword,
+            newPassword,
+            logoutAllDevices,
+          }),
+        }
+      );
+    } catch (error) {
+      console.warn('Failed to update user password:', error);
+      throw error;
+    }
+  };
+
   enableTwoFactor = async (): Promise<GenerateMfaResponse> => {
     try {
       const data = (await privateFetcher(
