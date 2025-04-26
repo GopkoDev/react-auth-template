@@ -1,0 +1,66 @@
+.table {
+  color: var(--primary_text);
+  display: grid;
+  line-height: 100%;
+  border: 1px solid transparent;
+
+  &--header {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    background-color: var(--secondary_surface);
+    color: var(--secondary_text);
+    font-weight: 700;
+    user-select: none;
+    border: 1px solid var(--border_color);
+    border-radius: var(--border_radius) var(--border_radius) 0 0;
+    box-sizing: border-box;
+
+    &--cell {
+      padding: 12px 16px;
+    }
+  }
+
+  &--body {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    box-sizing: border-box;
+    font-size: 14px;
+
+    &--row {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      border: 1px solid var(--border_color);
+      border-top: 0px;
+      color: var(--secondary_text);
+
+      transition: background-color 0.2s;
+      background-color: var(--main_surface);
+
+      &--cell {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        overflow: hidden;
+      }
+
+      &:hover {
+        background-color: var(--hover_color);
+      }
+
+      &:last-child {
+        border-radius: 0 0 var(--border_radius) var(--border_radius);
+      }
+    }
+
+    &--empty_state {
+      padding: 60px;
+      text-align: center;
+      grid-column: 1 / -1;
+      border: 1px solid var(--border_color);
+      border-radius: 0 0 var(--border_radius) var(--border_radius);
+    }
+  }
+}
